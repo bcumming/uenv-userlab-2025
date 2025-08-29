@@ -387,6 +387,32 @@ srun -n4 -N1 --uenv=paraview --view=paraview \
 
 ---
 
+# Building software with Spack and uenv
+
+The software in uenv is built using Spack -- each uenv is a complete Spack environment.
+
+The [`spack`](https://docs.cscs.ch/software/uenv/#spack) view sets environment variables that can be used to set up Spack to reuse packages from the uenv.
+
+CSCS provides [spack-uenv](https://docs.cscs.ch/build-install/uenv/#building-software-using-spack) -- a tool for creating Spack environments based on uenv.
+
+---
+
+# Demo time: build an application
+
+Build two applications using `prgenv-gnu`:
+
+* easy: [CSCS Affinity](https://github.com/bcumming/affinity)
+* trickier: [MicroHH 2.0](https://microhh.readthedocs.io/en/latest/index.html)
+* with Spack: [wrf](https://docs.cscs.ch/build-install/applications/wrf/#using-spack)
+
+---
+
+<br>
+<br>
+<br>
+<br>
+<br>
+
 # Using uenv on different clusters
 
 The `CLUSTER_NAME` variable defines the cluster on Alps.
@@ -411,22 +437,6 @@ True
 * large divergence between cluster configurations might break some uenv in the future
 
 ---
-
-# Demo time: build an application
-
-Build two applications using `prgenv-gnu`:
-
-* easy: [CSCS Affinity](https://github.com/bcumming/affinity)
-* trickier: [MicroHH 2.0](https://microhh.readthedocs.io/en/latest/index.html)
-* with Spack: [wrf]()
-
----
-
-<br>
-<br>
-<br>
-<br>
-<br>
 
 ## Thank you
 
