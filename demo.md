@@ -16,12 +16,16 @@ cd affinity/build/
 # go read the docs: https://github.com/bcumming/affinity
 CC=gcc CXX=g++ cmake -DAFFINITY_GPU_BACKEND=cuda -DAFFINITY_MPI=on ..
 
-# without 
+# without starting a new shell
 CC=gcc CXX=g++ uenv run prgenv-gnu/24.11:v1 --view=default -- cmake -DAFFINITY_GPU_BACKEND=cuda -DAFFINITY_MPI=on ..
 ```
 
 Test it out
 ```
+# fails if uenv not loaded
+srun -n8 -N2 ./affinity.cuda
+
+# load the uenv on the compute nodes
 srun --uenv=prgenv-gnu/24.11:v2 --view=default -n8 -N2 ./affinity.cuda
 srun --uenv=prgenv-gnu/24.11:v2 --view=default -n8 -N2 --gpus-per-task=1 ./affinity.cuda
 ```
