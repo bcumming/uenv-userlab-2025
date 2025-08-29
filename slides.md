@@ -418,6 +418,7 @@ Build two applications using `prgenv-gnu`:
 
 * easy: [CSCS Affinity](https://github.com/bcumming/affinity)
 * trickier: [MicroHH 2.0](https://microhh.readthedocs.io/en/latest/index.html)
+* with Spack: [wrf]()
 
 ---
 

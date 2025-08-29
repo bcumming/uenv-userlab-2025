@@ -26,31 +26,42 @@ srun --uenv=prgenv-gnu/24.11:v2 --view=default -n8 -N2 ./affinity.cuda
 srun --uenv=prgenv-gnu/24.11:v2 --view=default -n8 -N2 --gpus-per-task=1 ./affinity.cuda
 ```
 
-## arbor
+## microHH
 
-deps:
-```
-fmt,googletest,pugixml,nlohmann-json,random123,python,py-numpy,py-pybind11
-```
+[MicroHH 2.0](https://microhh.readthedocs.io/en/latest/index.html)
 
-https://docs.cscs.ch/build-install/uenv/
-https://docs.cscs.ch/build-install/applications/wrf/#using-spack
+Download the code:
 
-set up spack-uenv
 ```
-git clone https://github.com/eth-cscs/uenv-spack.git
-(cd uenv-spack && ./bootstrap)
+git clone --recurse-submodules https://github.com/microhh/microhh.git
+cd microhh
 ```
 
-configure the environment
+Let's use the `prgenv-gnu`
 ```
-uenv start prgenv-gnu/24.11:v2 --view=spack,default
-uenv-spack/uenv-spack $PWD/build --uarch=zen2 --specs=fmt,googletest,pugixml,nlohmann-json,random123,python,py-numpy,py-pybind11
+uenv start prgenv-gnu/24.11:v2 --view=default
 ```
 
-build
+Follow the docs to try to build with MPI support
 ```
-cd /users/bcumming/userlab/build
-./build
+cp config/generic.cmake config/default.cmake
+mkdir build; cd build
+cmake .. -DUSEMPI=TRUE
+make -j12
 ```
+
+We hit some compiler errors about missing headers.
+
+It looks like the CMake tool isn't properly configured to find all dependencies
+
+```
+52c52
+<         set(USER_CXX_FLAGS "-std=c++17 -I/user-environment/env/default/include")
+68c68
+< set(LIBS -L/user-environment/env/default/lib -L/user-environment/env/default/lib64 ${FFTW_LIB} ${FFTWF_LIB} ${NETCDF_LIB_C} ${HDF5_LIB})
+```
+
+## wrf
+
+[docs.cscs.ch](https://docs.cscs.ch/build-install/applications/wrf/#using-spack)
 
