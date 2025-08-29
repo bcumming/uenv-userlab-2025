@@ -25,6 +25,8 @@ On **Daint**, **Eiger**, **Santis** and Clariden CSCS support two software envir
 * will be removed in the future ...
 * ... and deployed via containers to provide up-to-date versions.
 
+**uenv** was developed to deliver applications, libraries and tools provided by CSCS to users.
+
 ---
 layout: two-cols
 layoutClass: gap-2
