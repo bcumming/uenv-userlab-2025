@@ -2,7 +2,8 @@
 theme: ./slidev-theme-cscs
 ---
 
-# uenv on Alps
+# Using and building software on Alps with uenv
+
 <br>
 
 Ben Cumming
