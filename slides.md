@@ -387,22 +387,40 @@ srun -n4 -N1 --uenv=paraview --view=paraview \
 
 ---
 
+# Application uenv
+
+**Supported applications** are provided by application-specific uenv.
+
+The [up to date list](https://docs.cscs.ch/software/sciapps) is available on the CSCS docs.
+
+* All apps are provided on both Eiger and Daint
+    * Some are also provided on Santis and Clariden
+* Multiple versions of each uenv
+    * Release and deprecation schedule is application specific
+
+You can use the application by loading the correct view.
+
+You can build your own version of the application using a "`develop`" view.
+* provides the tools and libraries required
+
+---
+
 # Building software with Spack and uenv
 
-The software in uenv is built using Spack -- each uenv is a complete Spack environment.
+The software in uenv is built using Spack: each uenv is a complete Spack environment.
 
 The [`spack`](https://docs.cscs.ch/software/uenv/#spack) view sets environment variables that can be used to set up Spack to reuse packages from the uenv.
 
-CSCS provides [spack-uenv](https://docs.cscs.ch/build-install/uenv/#building-software-using-spack) -- a tool for creating Spack environments based on uenv.
+CSCS provides [spack-uenv](https://docs.cscs.ch/build-install/uenv/#building-software-using-spack) -- a tool for creating Spack environments based on uenv (see the demo).
 
 ---
 
 # Demo time: build an application
 
-Build two applications using `prgenv-gnu`:
+Build three applications using `prgenv-gnu`:
 
 * easy: [CSCS Affinity](https://github.com/bcumming/affinity)
-* trickier: [MicroHH 2.0](https://microhh.readthedocs.io/en/latest/index.html)
+* typical: [MicroHH 2.0](https://microhh.readthedocs.io/en/latest/index.html)
 * with Spack: [wrf](https://docs.cscs.ch/build-install/applications/wrf/#using-spack)
 
 ---
